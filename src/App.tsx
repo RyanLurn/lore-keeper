@@ -1,7 +1,9 @@
+import { Button } from "@/components/ui/button";
+
 function App() {
   return (
-    <div className="h-screen text-3xl font-bold text-red-500">
-      Hello Lore Keeper
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      <Button>Click me</Button>
     </div>
   );
 }
