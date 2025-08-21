@@ -12,7 +12,9 @@
     "format:check": "bunx --bun prettier . --check --cache",
     "check:local": "bun run lint:fix && bun run format",
     "check:ci": "bun run lint && bun run format:check",
-    "preview": "bunx --bun vite preview"
+    "preview": "bunx --bun vite preview",
+    "convex:dev": "bun run --bun convex dev",
+    "convex:once": "bun run --bun convex dev --once"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",
@@ -20,6 +22,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "convex": "^1.25.4",
     "lucide-react": "^0.540.0",
     "next-themes": "^0.4.6",
     "react": "^19.1.1",

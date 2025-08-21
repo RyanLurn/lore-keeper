@@ -7,7 +7,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config([
-  globalIgnores(["dist"]),
+  globalIgnores(["dist", "**/convex/_generated/"]),
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
