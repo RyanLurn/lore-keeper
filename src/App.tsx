@@ -1,5 +1,7 @@
 function App() {
-  return <>Hello Lore Keeper</>;
+  return (
+    <div className="text-3xl font-bold text-red-500">Hello Lore Keeper</div>
+  );
 }
 
 export default App;
