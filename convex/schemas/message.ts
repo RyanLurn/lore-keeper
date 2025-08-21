@@ -1,27 +1,27 @@
 import { defineTable } from "convex/server";
 import { v } from "convex/values";
 
-const textPart = v.object({
+const textPartValidator = v.object({
   type: v.literal("text"),
   text: v.string(),
   state: v.optional(v.union(v.literal("streaming"), v.literal("done")))
 });
 
-const reasoningPart = v.object({
+const reasoningPartValidator = v.object({
   type: v.literal("text"),
   text: v.string(),
   state: v.optional(v.union(v.literal("streaming"), v.literal("done"))),
   providerMetadata: v.optional(v.record(v.string(), v.any()))
 });
 
-const messagePart = v.union(textPart, reasoningPart);
+const messagePartValidator = v.union(textPartValidator, reasoningPartValidator);
 
-const message = v.object({
+const messageFields = {
   role: v.union(v.literal("system"), v.literal("user"), v.literal("assistant")),
   metadata: v.optional(v.any()),
-  parts: v.array(messagePart)
-});
+  parts: v.array(messagePartValidator)
+};
 
-const messagesTable = defineTable(message);
+const messagesTable = defineTable(messageFields);
 
-export { messagesTable };
+export { messageFields, messagesTable };

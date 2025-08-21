@@ -13,7 +13,9 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as message from "../message.js";
 import type * as schemas_message from "../schemas/message.js";
+import type * as schemas_systemFields from "../schemas/systemFields.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -24,7 +26,9 @@ import type * as schemas_message from "../schemas/message.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  message: typeof message;
   "schemas/message": typeof schemas_message;
+  "schemas/systemFields": typeof schemas_systemFields;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
