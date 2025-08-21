@@ -1,0 +1,48 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "**.yml"
+      - "**.yaml"
+      - "**.json"
+      - "**.sql"
+      - "LICENSE"
+      - ".gitignore"
+      - ".gitattributes"
+      - ".env.example"
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "**.yml"
+      - "**.yaml"
+      - "**.json"
+      - "**.sql"
+      - "LICENSE"
+      - ".gitignore"
+      - ".gitattributes"
+      - ".env.example"
+
+jobs:
+  quality-check:
+    name: Check code quality
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies with bun
+        run: bun install
+
+      - name: Run Code Quality Checks with bun
+        run: bun run check:ci

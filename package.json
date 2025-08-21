@@ -7,7 +7,11 @@
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",
     "lint": "bunx --bun eslint . --cache",
+    "lint:fix": "bunx --bun eslint . --cache --fix",
     "format": "bunx --bun prettier . --write --cache",
+    "format:check": "bunx --bun prettier . --check --cache",
+    "check:local": "bun run lint:fix && bun run format",
+    "check:ci": "bun run lint && bun run format:check",
     "preview": "bunx --bun vite preview"
   },
   "dependencies": {
