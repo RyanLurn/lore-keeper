@@ -21,6 +21,7 @@ const updateTextPart = mutation({
     messageId: v.id("messages"),
     newTextPart: textPartValidator
   },
+  returns: v.null(),
   handler: async (ctx, { messageId, newTextPart }) => {
     const updatedMessage = await ctx.db.get(messageId);
     if (!updatedMessage) {
