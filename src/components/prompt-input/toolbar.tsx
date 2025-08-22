@@ -5,17 +5,15 @@ import { cn } from "@/lib/utils";
 
 const PromptInputToolbar = memo(function PromptInputToolbar({
   className,
-  sendDisabled,
-  status
+  isDisabled
 }: {
   className?: string;
-  sendDisabled: boolean;
-  status: "streaming" | "done";
+  isDisabled: boolean;
 }) {
   return (
     <div className={cn("flex items-center justify-between p-1", className)}>
       <PromptInputTools />
-      <PromptInputSendButton disabled={sendDisabled} status={status} />
+      <PromptInputSendButton isDisabled={isDisabled} />
     </div>
   );
 });

@@ -10,14 +10,12 @@ const PromptInput = memo(function PromptInput({
   sendHandler,
   prompt,
   promptChangeHandler,
-  status,
   isDisabled
 }: {
   className?: string;
   sendHandler: (e: FormEvent<HTMLFormElement>) => void;
   prompt: string;
   promptChangeHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  status: "streaming" | "done";
   isDisabled: boolean;
 }) {
   return (
@@ -34,10 +32,7 @@ const PromptInput = memo(function PromptInput({
         promptChangeHandler={promptChangeHandler}
         isDisabled={isDisabled}
       />
-      <PromptInputToolbar
-        sendDisabled={isDisabled || !prompt}
-        status={status}
-      />
+      <PromptInputToolbar isDisabled={isDisabled} />
     </form>
   );
 });

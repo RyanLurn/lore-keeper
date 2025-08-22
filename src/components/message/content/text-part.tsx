@@ -19,7 +19,7 @@ const TextPart = memo(function TextPart({
       )}
     >
       <Markdown components={markdownComponents} remarkPlugins={[remarkGfm]}>
-        {text}
+        {text === "" ? "*Thinking...*" : text}
       </Markdown>
     </div>
   );

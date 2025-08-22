@@ -3,6 +3,7 @@ import type { Doc } from "backend/_generated/dataModel";
 import { StickToBottom } from "use-stick-to-bottom";
 import { ScrollButton } from "@/components/conversation/scroll-button";
 import { Message } from "@/components/message";
+import ScreenLoader from "@/components/screen-loader";
 import { CHAT_CONTAINER_WIDTH } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +12,7 @@ const Conversation = memo(function Conversation({
   messages
 }: {
   className?: string;
-  messages: Doc<"messages">[];
+  messages: Doc<"messages">[] | undefined;
 }) {
   return (
     <StickToBottom
@@ -26,9 +27,13 @@ const Conversation = memo(function Conversation({
       <StickToBottom.Content
         className={cn("flex flex-col gap-4 p-4", CHAT_CONTAINER_WIDTH)}
       >
-        {messages.map(message => (
-          <Message key={message._id} message={message} />
-        ))}
+        {messages === undefined ? (
+          <ScreenLoader parentName="messages" />
+        ) : (
+          messages.map(message => (
+            <Message key={message._id} message={message} />
+          ))
+        )}
       </StickToBottom.Content>
       <ScrollButton />
     </StickToBottom>
