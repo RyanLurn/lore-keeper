@@ -12,7 +12,7 @@ const PromptInputToolbar = memo(function PromptInputToolbar({
 }) {
   return (
     <div className={cn("flex items-center justify-between p-1", className)}>
-      <PromptInputTools />
+      <PromptInputTools isDisabled={isDisabled} />
       <PromptInputSendButton isDisabled={isDisabled} />
     </div>
   );

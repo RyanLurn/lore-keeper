@@ -76,7 +76,6 @@ const send = mutation({
     );
 
     const messages = await ctx.db.query("messages").collect();
-    console.log(messages);
 
     await ctx.scheduler.runAfter(0, api.actions.generateAIResponse, {
       messages,

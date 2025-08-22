@@ -1,9 +1,8 @@
-import { memo } from "react";
 import type { Doc } from "backend/_generated/dataModel";
 import { TextPart } from "@/components/message/content/text-part";
 import { cn } from "@/lib/utils";
 
-const MessageContent = memo(function MessageContent({
+function MessageContent({
   _id,
   parts,
   className
@@ -29,6 +28,6 @@ const MessageContent = memo(function MessageContent({
       })}
     </div>
   );
-});
+}
 
 export { MessageContent };

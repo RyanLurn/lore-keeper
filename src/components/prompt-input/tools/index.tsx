@@ -1,12 +1,13 @@
-import { memo } from "react";
 import { File } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const PromptInputTools = memo(function PromptInputTools({
-  className
+function PromptInputTools({
+  className,
+  isDisabled
 }: {
   className?: string;
+  isDisabled: boolean;
 }) {
   return (
     <div
@@ -16,11 +17,11 @@ const PromptInputTools = memo(function PromptInputTools({
         className
       )}
     >
-      <Button size="icon" variant="outline">
+      <Button size="icon" variant="outline" disabled={isDisabled}>
         <File />
       </Button>
     </div>
   );
-});
+}
 
 export { PromptInputTools };
