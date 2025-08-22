@@ -16,6 +16,7 @@ const generateAIResponse = action({
     ),
     assistantMessageId: v.id("messages")
   },
+  returns: v.null(),
   handler: async (ctx, { messages, assistantMessageId }) => {
     try {
       const { text } = await generateText({
