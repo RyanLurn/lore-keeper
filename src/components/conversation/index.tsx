@@ -24,7 +24,11 @@ function Conversation({
       )}
     >
       <StickToBottom.Content
-        className={cn("flex h-full flex-col gap-4 p-4", CHAT_CONTAINER_WIDTH)}
+        className={cn(
+          "flex flex-col gap-4 p-4",
+          CHAT_CONTAINER_WIDTH,
+          messages ?? "h-full"
+        )}
       >
         {messages === undefined ? (
           <ScreenLoader parentName="messages" />
