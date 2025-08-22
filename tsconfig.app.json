@@ -33,5 +33,5 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["src"]
+  "include": ["src", "convex"]
 }

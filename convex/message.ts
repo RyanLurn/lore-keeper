@@ -1,7 +1,7 @@
-import { query } from "backend/_generated/server";
-import { messageFields } from "backend/schemas/message";
+import { mutation, query } from "backend/_generated/server";
+import { messageFields, textPartValidator } from "backend/schemas/message";
 import { systemFields } from "backend/schemas/systemFields";
-import { v } from "convex/values";
+import { ConvexError, v } from "convex/values";
 
 const list = query({
   returns: v.array(
@@ -16,4 +16,26 @@ const list = query({
   }
 });
 
-export { list };
+const updateTextPart = mutation({
+  args: {
+    messageId: v.id("messages"),
+    newTextPart: textPartValidator
+  },
+  handler: async (ctx, { messageId, newTextPart }) => {
+    const updatedMessage = await ctx.db.get(messageId);
+    if (!updatedMessage) {
+      throw new ConvexError("Message not found");
+    }
+    await ctx.db.patch(updatedMessage._id, {
+      parts: [
+        {
+          type: "text",
+          text: newTextPart.text,
+          state: newTextPart.state
+        }
+      ]
+    });
+  }
+});
+
+export { list, updateTextPart };

@@ -24,4 +24,4 @@ const messageFields = {
 
 const messagesTable = defineTable(messageFields);
 
-export { messageFields, messagesTable };
+export { textPartValidator, messageFields, messagesTable };
