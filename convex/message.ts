@@ -84,4 +84,14 @@ const send = mutation({
   }
 });
 
-export { list, updateTextPart, send };
+const clear = mutation({
+  returns: v.null(),
+  handler: async ctx => {
+    const messages = await ctx.db.query("messages").collect();
+    for (const message of messages) {
+      await ctx.db.delete(message._id);
+    }
+  }
+});
+
+export { list, updateTextPart, send, clear };
