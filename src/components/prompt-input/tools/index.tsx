@@ -1,5 +1,4 @@
-import { File } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ClearChatTool } from "@/components/prompt-input/tools/clear-chat";
 import { cn } from "@/lib/utils";
 
 function PromptInputTools({
@@ -17,9 +16,7 @@ function PromptInputTools({
         className
       )}
     >
-      <Button size="icon" variant="outline" disabled={isDisabled}>
-        <File />
-      </Button>
+      <ClearChatTool isDisabled={isDisabled} />
     </div>
   );
 }
