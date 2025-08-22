@@ -33,6 +33,14 @@ const generateAIResponse = action({
       });
     } catch (error) {
       console.error(error);
+      await ctx.runMutation(api.message.updateTextPart, {
+        messageId: assistantMessageId,
+        newTextPart: {
+          type: "text",
+          text: "Sorry, something went wrong.",
+          state: "done"
+        }
+      });
     }
   }
 });

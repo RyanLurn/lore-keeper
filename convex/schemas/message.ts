@@ -8,7 +8,7 @@ const textPartValidator = v.object({
 });
 
 const reasoningPartValidator = v.object({
-  type: v.literal("text"),
+  type: v.literal("reasoning"),
   text: v.string(),
   state: v.optional(v.union(v.literal("streaming"), v.literal("done"))),
   providerMetadata: v.optional(v.record(v.string(), v.any()))

@@ -34,13 +34,17 @@ function App() {
   );
 
   const isDisabled = useMemo(() => {
-    if (messages === undefined) return true;
-    if (messages.length === 0) return false;
-    const lastMessageStatus = messages[messages.length - 1]?.parts?.[0]?.state;
-    if (lastMessageStatus === "done") {
+    if (!messages || messages.length === 0) {
       return false;
     }
-    return true;
+    const lastMessage = messages[messages.length - 1];
+    if (!lastMessage) {
+      return false;
+    }
+    return (
+      lastMessage.role === "assistant" &&
+      lastMessage.parts[0]?.state === "streaming"
+    );
   }, [messages]);
 
   return (

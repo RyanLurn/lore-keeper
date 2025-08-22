@@ -31,13 +31,7 @@ const updateTextPart = mutation({
       throw new ConvexError("Message not found");
     }
     await ctx.db.patch(updatedMessage._id, {
-      parts: [
-        {
-          type: "text",
-          text: newTextPart.text,
-          state: newTextPart.state
-        }
-      ]
+      parts: [newTextPart]
     });
   }
 });
